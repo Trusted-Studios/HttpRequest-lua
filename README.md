@@ -1,4 +1,7 @@
-# HttpRequest in LUA / FiveM Umgebung
+# HttpRequest in LUA / FiveM environment
+
+## How it works
+> ...
 
 ### Lua Code
 ```lua
