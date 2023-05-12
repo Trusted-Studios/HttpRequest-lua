@@ -1,1 +1,1 @@
-print("^2Hello World^0")
+print("Das ist ein Test ;D")
