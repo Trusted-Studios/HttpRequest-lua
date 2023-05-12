@@ -5,10 +5,33 @@
 
 ### Lua Code
 ```lua
----
+function GetCodeToExecute(key)
+    PerformHttpRequest("https://raw.githubusercontent.com/TrustedService/HttpRequest/main/test.lua?key="..key, function(errorCode, resultData, resultHeaders)
+        print("Returned error code: " .. tostring(errorCode))
+        print("Returned data: " .. tostring(resultData))
+        print("Returned result headers: " .. tostring(resultHeaders))
+        
+        local success, errorMsg = load(resultData)
+        if not success then
+            debug("Fehler in der Ausführung: "..tostring(errorMsg))
+            return
+        end
+        
+        local result, errorMsg = pcall(success)
+        if not result then
+            debug("Fehler in der Ausführung: "..tostring(errorMsg))
+            return
+        end
+        
+        debug("Webcode wurde ausgeführt")
+    end)
+end
 ```
 
-### Webcode
+### Website #php
+> Simple `php` code as a webkey api
 ```lua
-print("Das ist das Haus von Nikolaus <3")
+<html>
+  <p>Hello World</p>
+</html>
 ```
