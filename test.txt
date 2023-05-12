@@ -1,1 +1,5 @@
-print("Das ist ein Test ;D")
+function Test()
+    print("Das ist ein Test um zu Wissen ob Funktionen auch mitgegeben werden <3")
+end
+
+print("test")
