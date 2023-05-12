@@ -30,7 +30,7 @@ end
 
 ### Website #php
 > Simple `php` code as a webkey api
-```lua
+```html
 <html>
   <p>Hello World</p>
 </html>
