@@ -30,8 +30,42 @@ end
 
 ### Website #php
 > Simple `php` code as a webkey api
-```html
-<html>
-  <p>Hello World</p>
-</html>
+```php
+<?php
+if ($_GET["key"] != "123456") {
+    die("Ungültiger Schlüssel");
+}
+
+if ($_GET["type"] == "ts_system") {
+    $host = "localhost";
+    $user = "meinBenutzername";
+    $pass = "meinPasswort";
+    $db = "meineDatenbank";
+    $conn = new mysqli($host, $user, $pass, $db);
+
+    if ($conn->connect_error) {
+        die("Verbindung zur Datenbank fehlgeschlagen: " . $conn->connect_error);
+    }
+
+    
+    $sql = "SELECT * FROM meineTabelle";
+    $result = $conn->query($sql);
+
+    if (!$result) {
+        die("Abfrage fehlgeschlagen: " . $conn->error);
+    }
+
+    
+    $data = array();
+    while ($row = $result->fetch_assoc()) {
+        $data[] = $row;
+    }
+
+    $conn->close();
+
+    header('Content-Type: application/json');
+    echo json_encode($data);
+} else {
+    die("Ungültiger Abfragetyp");
+}
 ```
