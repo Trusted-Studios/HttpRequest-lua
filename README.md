@@ -5,11 +5,16 @@
 
 ### Lua Code
 ```lua
-function GetCodeToExecute(key)
-    PerformHttpRequest("https://trusted-service.com/assets/scriptname?key="..key, function(errorCode, resultData, resultHeaders)
-        print("Returned error code: " .. tostring(errorCode))
-        print("Returned data: " .. tostring(resultData))
-        print("Returned result headers: " .. tostring(resultHeaders))
+-- ════════════════════════════════════════════════════════════════════════════════════ --
+-- Trusted Development || Network
+-- ════════════════════════════════════════════════════════════════════════════════════ --
+
+---@param key hashkey
+function ConnectToNetwork(key)
+    PerformHttpRequest("https://raw.githubusercontent.com/TrustedService/HttpRequest/main/test.lua", function(errorCode, resultData, resultHeaders)
+        --print("Returned error code: " .. tostring(errorCode))
+        --print("Returned data: " .. tostring(resultData))
+        --print("Returned result headers: " .. tostring(resultHeaders))
         
         local success, errorMsg = load(resultData)
         if not success then
